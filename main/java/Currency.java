@@ -2,7 +2,7 @@ public class Currency {
     public double currencyValue;
     public String currencyType;
 
-    public Currency(String currencyType) {
+    public Currency(String currencyType,double currencyValue) {
         this.currencyType=currencyType;
         this.currencyValue=currencyValue;
     }
