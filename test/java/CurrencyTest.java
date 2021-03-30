@@ -11,8 +11,9 @@ public class CurrencyTest {
         double rupeeValue = 74.85;
         Currency dollar = new Currency(currencyType1,dollarValue);
         Currency rupees = new Currency(currencyType2,rupeeValue);
+        Wallet wallet=new Wallet();
 
-        boolean actualValue = dollar.compareIf1DollarIsEqual74_85Rupees(dollar,rupees);
+        boolean actualValue = wallet.compareIf1DollarIsEqual74_85Rupees(dollar,rupees);
 
         assertEquals(expectedValue, actualValue);
     }
@@ -25,8 +26,9 @@ public class CurrencyTest {
         double rupeeValue = 100.01;
         Currency dollar = new Currency(currencyType1,dollarValue);
         Currency rupees = new Currency(currencyType2,rupeeValue);
+        Wallet wallet=new Wallet();
 
-        boolean actualValue = dollar.compareIf1DollarIsEqual74_85Rupees(dollar,rupees);
+        boolean actualValue = wallet.compareIf1DollarIsEqual74_85Rupees(dollar,rupees);
 
         assertEquals(expectedValue, actualValue);
     }

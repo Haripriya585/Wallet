@@ -1,19 +1,17 @@
 public class Currency {
-    public double currencyValue;
-    public String currencyType;
+    private double currencyValue;
+    private String currencyType;
 
     public Currency(String currencyType,double currencyValue) {
         this.currencyType=currencyType;
         this.currencyValue=currencyValue;
     }
 
-    public boolean compareIf1DollarIsEqual74_85Rupees(Currency dollar,Currency rupees){
-        if(dollar.currencyValue*74.85==rupees.currencyValue){
-            return true;
-        }else{
-            return false;
-        }
+    public double getCurrencyValue() {
+        return currencyValue;
     }
 
-
+    public String getCurrencyType() {
+        return currencyType;
+    }
 }
