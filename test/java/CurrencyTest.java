@@ -47,4 +47,19 @@ public class CurrencyTest {
 
         assertEquals(expectedValue, actualValue);
     }
+    @Test
+    public void testSumOfMoneyInTheWalletWithCurrencyPreferenceRupees(){
+        double expectedValue = 3;
+        String currencyType1 = "Dollar";
+        String currencyType2 = "Rupees";
+        double dollarValue = 1;
+        double rupeeValue = 74.85+149.7;
+        Currency dollar = new Currency(currencyType1,dollarValue);
+        Currency rupees = new Currency(currencyType2,rupeeValue);
+        Wallet wallet=new Wallet();
+
+        double actualValue = wallet.sumOfMoneyInTheWalletWithCurrencyPreferenceRupees(dollar,rupees);
+
+        assertEquals(expectedValue, actualValue);
+    }
 }

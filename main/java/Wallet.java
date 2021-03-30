@@ -11,4 +11,8 @@ public class Wallet {
     public double sumOfMoneyInTheWalletWithCurrencyPreferenceDollar(Currency dollar, Currency rupees) {
         return (dollar.getCurrencyValue()*74.85+rupees.getCurrencyValue());
     }
+
+    public double sumOfMoneyInTheWalletWithCurrencyPreferenceRupees(Currency dollar, Currency rupees) {
+        return (dollar.getCurrencyValue()+rupees.getCurrencyValue()/74.85);
+    }
 }
