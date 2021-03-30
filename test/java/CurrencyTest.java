@@ -49,7 +49,7 @@ public class CurrencyTest {
     }
     @Test
     public void testSumOfMoneyInTheWalletWithCurrencyPreferenceRupees(){
-        double expectedValue = 3;
+        double expectedValue = 4;
         String currencyType1 = "Dollar";
         String currencyType2 = "Rupees";
         double dollarValue = 1;
