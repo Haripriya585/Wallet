@@ -1,27 +1,38 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Wallet {
     private double totalRupees=0;
     private double totalDollar=0;
-    public static double totalBalance=0;
-    public boolean compareIf1DollarIsEqual74_85Rupees(Currency dollar,Currency rupees){
-        if(dollar.getCurrencyValue()*74.85==rupees.getCurrencyValue()){
+    public  double totalBalance=0;
+    ArrayList<Double>  dollarValueList=new ArrayList<Double>();
+    ArrayList<Double>  rupeesValueList=new ArrayList<Double>();
+    public void depositMoneyInWallet(CurrencyType currencyType,Currency currency){
+        if(currencyType==CurrencyType.DOLLAR){
+            dollarValueList.add(currency.currencyValue);
+        }else{
+            rupeesValueList.add(currency.currencyValue);
+        }
+    }
+
+    public double getTotalBalanceInRupees() {
+        dollarValueList.forEach((value)->totalBalance+=value*74.85);
+        rupeesValueList.forEach((value)->totalBalance+=value);
+        return totalBalance;
+    }
+    public double getTotalBalanceInDollar() {
+        dollarValueList.forEach((value)->totalBalance+=value);
+        rupeesValueList.forEach((value)->totalBalance+=value/74.85);
+        return totalBalance;
+    }
+
+    public boolean compareIf1DollarIsEqual74_85Rupees(Currency dollar, Currency rupees) {
+        if(dollar.currencyValue*74.85==rupees.currencyValue){
             return true;
         }else{
             return false;
         }
-    }
-
-    public void depositMoneyInWallet(Currency currency,String preferenceType){
-        double totalMoney=0;
-        if(currency.getCurrencyType()=="Dollar" && preferenceType=="Rupee"){
-            totalBalance=totalBalance+currency.getCurrencyValue()*74.85;
-        }else if(currency.getCurrencyType()=="Rupees" && preferenceType=="Dollar"){
-            totalBalance=totalBalance+currency.getCurrencyValue()/74.85;
-        }else{
-            totalBalance=totalBalance+currency.getCurrencyValue();
-        }
-    }
-
-    public double totalMoneyInWallet(){
-        return totalBalance;
     }
 }
