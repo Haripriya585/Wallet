@@ -33,7 +33,7 @@ public class CurrencyTest {
         assertEquals(expectedValue, actualValue);
     }
     @Test
-    public void testSumOfMoneyInTheWalletWithCurrencyPreferenceDollar(){
+    public void testBalanceInTheWalletWithCurrencyPreferenceDollar(){
         double expectedValue = 124.85;
         String currencyType1 = "Dollar";
         String currencyType2 = "Rupees";
@@ -42,23 +42,30 @@ public class CurrencyTest {
         Currency dollar = new Currency(currencyType1,dollarValue);
         Currency rupees = new Currency(currencyType2,rupeeValue);
         Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(dollar,"Dollar");
+        wallet.depositMoneyInWallet(rupees,"Dollar");
 
-        double actualValue = wallet.sumOfMoneyInTheWalletWithCurrencyPreferenceDollar(dollar,rupees);
+        double actualValue = wallet.totalMoneyInWallet();
 
         assertEquals(expectedValue, actualValue);
     }
     @Test
-    public void testSumOfMoneyInTheWalletWithCurrencyPreferenceRupees(){
+    public void testBalanceInTheWalletWithCurrencyPreferenceRupees(){
         double expectedValue = 4;
         String currencyType1 = "Dollar";
         String currencyType2 = "Rupees";
         double dollarValue = 1;
-        double rupeeValue = 74.85+149.7;
+        double rupeeValue1 = 74.85;
+        double rupeeValue2=149.7;
         Currency dollar = new Currency(currencyType1,dollarValue);
-        Currency rupees = new Currency(currencyType2,rupeeValue);
+        Currency rupees = new Currency(currencyType2,rupeeValue1);
+        Currency rupees1 = new Currency(currencyType2,rupeeValue2);
         Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(dollar,"Rupee");
+        wallet.depositMoneyInWallet(rupees,"Rupee");
+        wallet.depositMoneyInWallet(rupees1,"Rupee");
 
-        double actualValue = wallet.sumOfMoneyInTheWalletWithCurrencyPreferenceRupees(dollar,rupees);
+        double actualValue = wallet.totalMoneyInWallet();
 
         assertEquals(expectedValue, actualValue);
     }
