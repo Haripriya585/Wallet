@@ -35,4 +35,12 @@ public class Wallet {
             return false;
         }
     }
+
+    public double withdrawMoneyFromWalletAsDollar(double amountToBeWithdrawn){
+        return getTotalBalanceInDollar()-amountToBeWithdrawn;
+    }
+
+    public double withdrawMoneyFromWalletAsRupees(double amountToBeWithdrawn){
+        return getTotalBalanceInRupees()-amountToBeWithdrawn;
+    }
 }

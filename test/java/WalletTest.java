@@ -66,4 +66,43 @@ public class WalletTest {
 
         assertEquals(expectedValue, actualValue);
     }
+    @Test
+    public void testTotalAmountAfterMoneyWithdrawnFromWalletAsDollar(){
+        double expectedValue = 4;
+        CurrencyType currencyType1 = CurrencyType.DOLLAR;
+        CurrencyType currencyType2 = CurrencyType.RUPEES;
+        double dollarValue = 3;
+        double rupeeValue=149.7;
+        double amountToBeWithdrawn=1;
+        Currency dollar = new Currency(dollarValue);
+        Currency rupees = new Currency(rupeeValue);
+        Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(currencyType1,dollar);
+        wallet.depositMoneyInWallet(currencyType2,rupees);
+
+
+        double actualValue = wallet.withdrawMoneyFromWalletAsDollar(amountToBeWithdrawn);
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void testTotalAmountAfterMoneyWithdrawnFromWalletAsRupees(){
+        double expectedValue = 300;
+        CurrencyType currencyType1 = CurrencyType.DOLLAR;
+        CurrencyType currencyType2 = CurrencyType.RUPEES;
+        double dollarValue = 3;
+        double rupeeValue=149.7;
+        double amountToBeWithdrawn=74.25;
+        Currency dollar = new Currency(dollarValue);
+        Currency rupees = new Currency(rupeeValue);
+        Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(currencyType1,dollar);
+        wallet.depositMoneyInWallet(currencyType2,rupees);
+
+
+        double actualValue = wallet.withdrawMoneyFromWalletAsRupees(amountToBeWithdrawn);
+
+        assertEquals(expectedValue, actualValue);
+    }
 }
