@@ -1,7 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Wallet {
     private double totalRupees=0;
@@ -37,10 +34,20 @@ public class Wallet {
     }
 
     public double withdrawMoneyFromWalletAsDollar(double amountToBeWithdrawn){
-        return getTotalBalanceInDollar()-amountToBeWithdrawn;
+        double totalBalaceInDollar=getTotalBalanceInDollar();
+        if(amountToBeWithdrawn>totalBalaceInDollar){
+            throw new IllegalArgumentException("Insufficient dollars to withdraw");
+        }else {
+            return totalBalaceInDollar - amountToBeWithdrawn;
+        }
     }
 
     public double withdrawMoneyFromWalletAsRupees(double amountToBeWithdrawn){
-        return getTotalBalanceInRupees()-amountToBeWithdrawn;
+        double totalBalanceInRupees=getTotalBalanceInRupees();
+        if(amountToBeWithdrawn>totalBalanceInRupees){
+            throw new IllegalArgumentException("Insufficient Rupees to withdraw");
+        }else {
+            return totalBalanceInRupees- amountToBeWithdrawn;
+        }
     }
 }

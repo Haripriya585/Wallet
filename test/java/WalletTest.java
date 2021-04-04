@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 public class WalletTest {
     @Test
     public void test1DollarIsEqualTo74_85Rupees() {
@@ -80,10 +80,24 @@ public class WalletTest {
         wallet.depositMoneyInWallet(currencyType1,dollar);
         wallet.depositMoneyInWallet(currencyType2,rupees);
 
-
         double actualValue = wallet.withdrawMoneyFromWalletAsDollar(amountToBeWithdrawn);
 
         assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void testToWithdrawFromWalletAsDollarWhenInsufficientAmountOfDollars(){
+        CurrencyType currencyType1 = CurrencyType.DOLLAR;
+        CurrencyType currencyType2 = CurrencyType.RUPEES;
+        double dollarValue = 1;
+        double rupeeValue=74.85;
+        double amountToBeWithdrawn=3;
+        Currency dollar = new Currency(dollarValue);
+        Currency rupees = new Currency(rupeeValue);
+        Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(currencyType1,dollar);
+        wallet.depositMoneyInWallet(currencyType2,rupees);
+
+        assertThrows(RuntimeException.class, () -> {wallet.withdrawMoneyFromWalletAsDollar(amountToBeWithdrawn);});
     }
 
     @Test
@@ -100,9 +114,23 @@ public class WalletTest {
         wallet.depositMoneyInWallet(currencyType1,dollar);
         wallet.depositMoneyInWallet(currencyType2,rupees);
 
-
         double actualValue = wallet.withdrawMoneyFromWalletAsRupees(amountToBeWithdrawn);
 
         assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void testToWithdrawFromWalletAsRupeesWhenInsufficientAmountOfRupees(){
+        CurrencyType currencyType1 = CurrencyType.DOLLAR;
+        CurrencyType currencyType2 = CurrencyType.RUPEES;
+        double dollarValue = 1;
+        double rupeeValue=74.85;
+        double amountToBeWithdrawn=224.55;
+        Currency dollar = new Currency(dollarValue);
+        Currency rupees = new Currency(rupeeValue);
+        Wallet wallet=new Wallet();
+        wallet.depositMoneyInWallet(currencyType1,dollar);
+        wallet.depositMoneyInWallet(currencyType2,rupees);
+
+        assertThrows(RuntimeException.class, () -> {wallet.withdrawMoneyFromWalletAsRupees(amountToBeWithdrawn);});
     }
 }
